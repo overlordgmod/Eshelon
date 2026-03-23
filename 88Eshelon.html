@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>88-е обучающее отделение «Эшелон»</title>
+
+<style>
+:root {
+    --accent: #4da3ff;
+    --accent-2: #8fc7ff;
+    --accent-rgb: 77, 163, 255;
+    --surface: #141414;
+    --surface-2: #1a1a1a;
+    --text: #e5e5e5;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #0a0a0a;
+    background-image:
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(var(--accent-rgb), 0.12), transparent),
+        radial-gradient(ellipse 60% 40% at 100% 100%, rgba(var(--accent-rgb), 0.06), transparent),
+        radial-gradient(ellipse 50% 30% at 0% 80%, rgba(var(--accent-rgb), 0.05), transparent),
+        linear-gradient(180deg, #0d0d0d 0%, #0a0a0a 40%, #080808 100%);
+    background-attachment: fixed;
+    color: var(--text);
+    min-height: 100vh;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        repeating-linear-gradient(
+            105deg,
+            transparent,
+            transparent 2px,
+            rgba(var(--accent-rgb), 0.02) 2px,
+            rgba(var(--accent-rgb), 0.02) 3px
+        );
+    pointer-events: none;
+    z-index: 0;
+}
+
+nav {
+    position: sticky;
+    top: 0;
+    background: rgba(20, 20, 20, 0.95);
+    backdrop-filter: blur(8px);
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    border-bottom: 2px solid var(--accent);
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+nav a {
+    color: #e5e5e5;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: var(--accent);
+}
+
+header {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(90deg, #141414 0%, #1a1a1a 30%, #1c1512 70%, #141414 100%);
+    border-bottom: 1px solid rgba(var(--accent-rgb), 0.2);
+    position: relative;
+    z-index: 1;
+}
+
+header h1 {
+    color: var(--accent);
+    margin: 0;
+    font-size: 34px;
+    letter-spacing: 2px;
+}
+
+.section {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 35px;
+    background: linear-gradient(145deg, #1a1a1a 0%, #151515 100%);
+    border-radius: 14px;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.4), 0 0 20px rgba(var(--accent-rgb), 0.10);
+    border: 1px solid rgba(var(--accent-rgb), 0.14);
+    position: relative;
+    z-index: 1;
+}
+
+.section h2 {
+    color: var(--accent);
+    border-left: 5px solid var(--accent);
+    padding-left: 12px;
+    margin-bottom: 25px;
+}
+
+.section h3 {
+    color: #e5e5e5;
+    font-size: 1.1em;
+    margin-top: 22px;
+    margin-bottom: 10px;
+}
+
+.intro-text {
+    font-size: 1.05em;
+    line-height: 1.65;
+}
+
+.intro-title {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 1.15em;
+    letter-spacing: 0.5px;
+    border-left: 4px solid var(--accent);
+    padding-left: 10px;
+    margin-right: 2px;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 12px;
+}
+
+.radio-box {
+    background: var(--surface);
+    padding: 18px;
+    border-radius: 10px;
+    border: 1px solid rgba(var(--accent-rgb), 0.45);
+}
+
+.highlight {
+    color: var(--accent);
+    font-weight: bold;
+}
+
+.collapse-details {
+    margin-bottom: 14px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.collapse-details:last-child {
+    margin-bottom: 0;
+}
+
+.collapse-details summary {
+    padding: 12px 14px;
+    cursor: pointer;
+    font-weight: bold;
+    background: #1a1a1a;
+    list-style: none;
+    user-select: none;
+    transition: background 0.2s, color 0.2s;
+}
+
+.collapse-details summary::-webkit-details-marker {
+    display: none;
+}
+
+.collapse-details summary::before {
+    content: "▶ ";
+    color: var(--accent);
+    margin-right: 8px;
+    display: inline-block;
+    transition: transform 0.2s;
+}
+
+.collapse-details[open] summary::before {
+    transform: rotate(90deg);
+}
+
+.collapse-details summary:hover {
+    background: #222;
+    color: var(--accent);
+}
+
+.collapse-details[open] summary {
+    border-bottom: 1px solid #333;
+}
+
+.collapse-details .details-content {
+    padding: 14px 18px;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    border-top: 1px solid #222;
+    color: #777;
+    position: relative;
+    z-index: 1;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <a href="#" id="nav-88-legion">88 Универсально-обучающий легион</a>
+    <a href="#intro">Описание</a>
+    <a href="#command">Командование</a>
+    <a href="#tasks">Задачи</a>
+    <a href="#staff">Состав</a>
+    <a href="#functions">Функции</a>
+</nav>
+
+<header>
+    <h1>88-е отделение «Эшелон»</h1>
+</header>
+
+<div class="section" id="intro">
+    <p class="intro-text"><span class="intro-title">88-е обучающее отделение «Эшелон»</span></p>
+    <p class="intro-text">Если 1-я элитная рота «Авангард» – это сталь и лезвие легиона, то «Эшелон» – его голова. Отделение создано для превращения новоприбывших рекрутов в бойцов, способных встать в строй.</p>
+    <p class="intro-text">«Эшелон» отвечает за то, чтобы новобранцы не просто умели держать оружие, а мыслили тактически, знали своё место в бою и были готовы к любым условиям.</p>
+
+    <h3>Клятва</h3>
+    <div class="radio-box">
+        <p>Я, клон Великой Армии Республики (свой номер), поступаю на военную службу и присягаю на верность 88-му Легиону и Республике. Клянусь соблюдать устав ВАР, выполнять требования устава, приказы командиров и начальников, возложенные на меня законным образом обязанности.</p>
+        <p>Клянусь, находясь на военной службе, быть честным, добросовестным, достойно переносить связанные с ней трудности. Клянусь мужественно, не щадя своей жизни, защищать народ и государственные интересы Республики. Клянусь не применять оружие против народа и законно избранных им органов власти. Клянусь достойно исполнять воинский долг, мужественно защищать свободы Республики!</p>
+    </div>
+</div>
+
+<div class="section" id="command">
+    <h2>Командование</h2>
+    <div class="radio-box">
+        <ul style="margin: 0; padding-left: 20px;">
+            <li>КК 8080 Fordi</li>
+            <li>9875 Aid</li>
+        </ul>
+    </div>
+</div>
+<div class="section" id="tasks">
+    <h2>Задача</h2>
+    <div class="radio-box">
+        <ol style="margin: 0; padding-left: 24px;">
+            <li>Подготовка новоприбывших бойцов</li>
+            <li>Обучение на специализации</li>
+            <li>Тренировки для бойцов</li>
+            <li>Проведение школ</li>
+        </ol>
+    </div>
+</div>
+
+<div class="section" id="staff">
+    <h2>Состав</h2>
+    <details class="collapse-details">
+        <summary>Арк-бойцы-инструктора</summary>
+        <div class="details-content">
+            <p>Элитные наставники, прошедшие не одну кампанию. Их слово – закон, их опыт – учебник. Каждый инструктор «Эшелона» не только обучает новичков, но и оттачивает навыки действующих солдат, готовя их к переходу на новые специализации.</p>
+        </div>
+    </details>
+</div>
+
+<div class="section" id="functions">
+    <h2>Функции</h2>
+
+    <details class="collapse-details">
+        <summary>Начальная подготовка</summary>
+        <div class="details-content">
+            <p>Работа с рекрутами «с нуля». Огневая, тактическая, физическая и психологическая подготовка.</p>
+        </div>
+    </details>
+
+    <details class="collapse-details">
+        <summary>Переобучение и повышение квалификации</summary>
+        <div class="details-content">
+            <p>Подготовка солдат к сдаче нормативов на инженеров, подрывников, штурмовиков или тяжёлую пехоту.</p>
+        </div>
+    </details>
+
+    <div class="radio-box" style="margin-top: 18px;">
+        <p class="intro-text" style="margin: 0;">«Эшелон» – это конвейер по производству подготовленных солдат. Каждый боец легиона, независимо от звания и заслуг, прошёл через руки инструкторов этого отделения. Здесь куется не просто сила, здесь куется умение эту силу применять.</p>
+    </div>
+</div>
+
+<footer>
+    © 88-й Легион
+</footer>
+
+</body>
+</html>
